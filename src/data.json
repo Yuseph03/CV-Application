@@ -1,0 +1,22 @@
+{
+    "Person": {
+        "name": "yuseph", 
+        "email": "yuseph@gmail.com", 
+        "address": "Karaj",
+        "number": "12345678"
+    },
+    "Education": {
+        "uniStartDate": "2024",
+        "uniEndDate": "2028",
+        "school": "Karaj Azad Islamic University",
+        "degree": "Computer Engineering (Software)",
+        "location": "Iran, Karaj"
+    },
+    "Job": {
+        "jobStartDate": "2024",
+        "jobEndDate": "present",
+        "company": "Dream wage cuckery den",
+        "role": "Fullstack Developer",
+        "location": "Iran, Tehran"
+    }  
+}

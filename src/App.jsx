@@ -1,61 +1,52 @@
 import { useState } from 'react'
 import './App.css'
-import CV from './components/cv'
+import CreateForm from './components/CreateForm'
+import CV from './components/CV'
+import Data from './data.json'
 
 function App() {
-const [name, setName] = useState('Yuseph')
-const [email, setEmail] = useState('Yuseph@gmail.com')
-const [number, setNumber] = useState('038120548')
-const [address, setAddresss] = useState('Frankfurt')
+  const [fullname, setName] = useState(Data.Person.name)
+  const [email, setEmail] = useState(Data.Person.email)
+  const [number, setNumber] = useState(Data.Person.number)
+  const [address, setAddress] = useState(Data.Person.address)
+  const [school, setSchool] = useState(Data.Education.school)
+  const [degree, setDegree] = useState(Data.Education.degree)
+  const [uniStartDate, setUniStartDate] = useState(Data.Education.uniStartDate)
+  const [uniEndDate, setUniEndDate] = useState(Data.Education.uniEndDate)
+  const [uniLocation, setUniLocation] = useState(Data.Education.location)
+  const [company, setCompany] = useState(Data.Job.company)
+  const [role, setRole] = useState(Data.Job.role)
+  const [jobStartDate, setJobStartDate] = useState(Data.Job.jobStartDate)
+  const [jobEndDate, setJobEndDate] = useState(Data.Job.jobEndDate)
+  const [jobLocation, setJobLocation] = useState(Data.Job.location)
 
-const [startDate, setStartDate] = useState('2025')
-const [endDate, setEndDate] = useState('present')
-const [school, setSchool] = useState('Karaj Azad Islamic University')
-const [degree, setDegree] = useState('Computer Engineering (Software)')
-const [location, setLoc] = useState('Iran, Karaj')
+  const cvProps = {
+    fullname, email, number, address, school, degree, 
+    uniStartDate, uniEndDate, uniLocation, company, role, jobStartDate, jobEndDate, jobLocation
+  }
 
-const formHandler = (e) => {
-  e.preventDefault();
-}
 
-const PersonInfo = 
-  <div>
-        <form id="personal-info" action='submit' onSubmit={formHandler}>
-          <label htmlFor='fullname'><p>Full Name</p> </label>
-          <input type='text' id='fullname' name='fullname' onChange={(e) => setName(e.target.value)}/>
-          <label htmlFor='email'><p>Email</p></label>
-          <input type='email' id='email' name='email' onChange={(e) => setEmail(e.target.value)}/>
-          <label htmlFor="number"><p>Phone Number</p></label>
-          <input name="number" type="text"  
-          pattern="^\+(?:[0-9] ?){6,25}[0-9]$" 
-          placeholder="+XX XXXXXXXXX" onChange={(e) => setNumber(e.target.value)}/>          
-          <label htmlFor="address"><p>Address</p></label>
-          <input type="text" id='address' name='address' onChange={(e) => setAddresss(e.target.value)}/>
-        </form>
-  </div>
+  const personFormProps = {
+    inputType: "PersonInfo", setName, setEmail, setNumber, setAddress
+  }
 
-const EducationInfo = 
-  <div>
-      <form id='edu-info' action="submit" onSubmit={formHandler}>
-        <label htmlFor="school"><p>School</p></label>
-        <input type="text" id='school' name='school' onChange={(e) => setSchool(e.target.value)}/>
-        <label htmlFor="degree"><p>Degree</p></label>
-        <input type="text" id='degree' name='degree' onChange={(e) => setDegree(e.target.value)}/>
-        <label htmlFor="start-date"><p>Start Date</p></label>
-        <input type="date" id='start-date' name='start-date' onChange={(e) => setStartDate(e.target.value)}/>
-        <label htmlFor="end-date"><p>End Date</p></label>
-        <input type="date" id='end-date' name='end-date' onChange={(e) => setEndDate(e.target.value)}/>  
-        <label htmlFor="location"><p>Location</p></label>
-        <input type="text" id='lcoation' name='location' onChange={(e) => setLoc(e.target.value)}/>
-      </form>
-  </div>
+  const jobFormProps = {
+    inputType: "JobInfo", setCompany, setRole, setJobStartDate, setJobEndDate, setJobLocation
+  }
 
-  const headsProps={name, email, number, address, school, degree, startDate, endDate, location}
+  const eduFormProps = {
+    inputType: "EduInfo", setSchool, setDegree, setUniStartDate, setUniEndDate, setUniLocation
+  }
+
   return (
-    <div id='app-grid'>
-      {PersonInfo}
-      {EducationInfo}
-      <CV {...headsProps} />
+    <div id="app-grid">
+      <div className="forms">
+        <CreateForm {...personFormProps}/>
+        <CreateForm {...jobFormProps} />
+        <CreateForm {...eduFormProps} />
+      </div>
+
+      <CV {...cvProps}/>
     </div>
   )
 }

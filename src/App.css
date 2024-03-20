@@ -11,6 +11,11 @@
   flex-direction: row;
   gap: 2rem;
 }
+.forms {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
 
 #cv-heading {
   padding: 0.5em;
@@ -19,7 +24,8 @@
 }
 
 #personal-info input,
-#edu-info  input {
+#edu-info  input,
+#job-info input {
   background-color: gainsboro;
   padding: 10px;
   border: none;
