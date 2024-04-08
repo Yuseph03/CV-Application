@@ -3,7 +3,7 @@ import './App.css'
 import CreateForm from './components/CreateForm'
 import CV from './components/CV'
 import Data from './data.json'
-import HandleReset from './components/HandleReset' 
+import HandleLoad from './components/HandleLoad' 
 import HandleDelete from './components/HandleDelete'
 
 function App() {
@@ -22,11 +22,16 @@ function App() {
   const [jobEndDate, setJobEndDate] = useState(Data.Job.jobEndDate)
   const [jobLocation, setJobLocation] = useState(Data.Job.location)
 
+  const setterProps = {
+    setName, setEmail, setNumber, setAddress, setCompany, setRole, setJobStartDate, 
+    setJobEndDate, setJobLocation, setSchool, setDegree, setUniStartDate,
+    setUniEndDate, setUniLocation
+  }
+
   const cvProps = {
     fullname, email, number, address, school, degree, 
     uniStartDate, uniEndDate, uniLocation, company, role, jobStartDate, jobEndDate, jobLocation
   }
-
 
   const personFormProps = {
     inputType: "PersonInfo", setName, setEmail, setNumber, setAddress,
@@ -45,6 +50,8 @@ function App() {
 
   return (
     <div id="app-grid">
+      <button id="delete" onClick={() => HandleDelete(setterProps)} >Clear Resume</button>
+      <button id="reset" onClick={() => HandleLoad(setterProps)}>Load Example</button>
       <div className="forms">
         <CreateForm {...personFormProps}/>
         <CreateForm {...jobFormProps} />
