@@ -4,13 +4,15 @@
   margin: auto;
   text-align: center;
   --heading-color: rgba(55, 55, 201, 0.849);
+  --section-heading-color: gainsboro;
 }
 
 #app-grid {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 5rem;
 }
+
 .forms {
   display: flex;
   flex-direction: column;
@@ -18,9 +20,22 @@
 }
 
 #cv-heading {
+  display: grid;;
+  grid-template-rows: 1fr 1fr;
   padding: 0.5em;
   color: white;
   background-color: var(--heading-color);
+}
+
+#cv-heading > div {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+#cv-job-heading, 
+#cv-education-heading {
+  background-color: var(--section-heading-color);
 }
 
 #personal-info input,

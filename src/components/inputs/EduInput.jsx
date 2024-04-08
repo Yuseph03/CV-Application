@@ -6,15 +6,15 @@ export default function EduInput (props)   {
         ?
         <div>
             <p>School</p>
-            <input type='text' name="school" onChange={(e) => props.setSchool(e.target.value)}/>
+            <input type='text' name="school" value={props.school} onChange={(e) => props.setSchool(e.target.value)}/>
             <p>Start Date</p>
-            <input type='number' name="uni-start" onChange={(e) => props.setDegree(e.target.value)}/>
+            <input type='text' name="uni-start" value={props.uniStartDate} onChange={(e) => props.setDegree(e.target.value)}/>
             <p>End Date</p>
-            <input type='number' name="uni-end" onChange={(e) => props.setUniStartDate(e.target.value)}/>
+            <input type='text' name="uni-end" value={props.uniEndDate} onChange={(e) => props.setUniStartDate(e.target.value)}/>
             <p>Degree</p>
-            <input type="text" name="degree" onChange={(e) => props.setUniEndDate(e.target.value)}/>
+            <input type="text" name="degree" value={props.degree} onChange={(e) => props.setUniEndDate(e.target.value)}/>
             <p>Location</p>
-            <input type="text" name="uni-location" onChange={(e) => props.setUniLocation(e.target.value)}/>
+            <input type="text" name="uni-location" value={props.uniLocation} onChange={(e) => props.setUniLocation(e.target.value)}/>
         </div> : null} 
     </div>
     )

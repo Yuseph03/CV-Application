@@ -3,6 +3,8 @@ import './App.css'
 import CreateForm from './components/CreateForm'
 import CV from './components/CV'
 import Data from './data.json'
+import HandleReset from './components/HandleReset' 
+import HandleDelete from './components/HandleDelete'
 
 function App() {
   const [fullname, setName] = useState(Data.Person.name)
@@ -27,15 +29,18 @@ function App() {
 
 
   const personFormProps = {
-    inputType: "PersonInfo", setName, setEmail, setNumber, setAddress
+    inputType: "PersonInfo", setName, setEmail, setNumber, setAddress,
+     fullname, email, number, address 
   }
 
   const jobFormProps = {
-    inputType: "JobInfo", setCompany, setRole, setJobStartDate, setJobEndDate, setJobLocation
+    inputType: "JobInfo", setCompany, setRole, setJobStartDate, 
+    setJobEndDate, setJobLocation, company, role, jobStartDate, jobEndDate, jobLocation
   }
 
   const eduFormProps = {
-    inputType: "EduInfo", setSchool, setDegree, setUniStartDate, setUniEndDate, setUniLocation
+    inputType: "EduInfo", setSchool, setDegree, setUniStartDate,
+     setUniEndDate, setUniLocation, school, degree, uniStartDate, uniEndDate, uniLocation
   }
 
   return (
