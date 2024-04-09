@@ -21,6 +21,11 @@ function App() {
   const [jobStartDate, setJobStartDate] = useState(Data.Job.jobStartDate)
   const [jobEndDate, setJobEndDate] = useState(Data.Job.jobEndDate)
   const [jobLocation, setJobLocation] = useState(Data.Job.location)
+  const [switchTab, setSwitchTab] = useState(false)
+
+  const handleSwitchTab = () => {
+    return setSwitchTab(!switchTab);
+  };
 
   const setterProps = {
     setName, setEmail, setNumber, setAddress, setCompany, setRole, setJobStartDate, 
@@ -50,13 +55,40 @@ function App() {
 
   return (
     <div id="app-grid">
+      {/* <button id='content' onClick={handleSwitchTab}>Content</button> */}
+      <button id='custumization' onClick={handleSwitchTab}>Customize</button>
       <button id="delete" onClick={() => HandleDelete(setterProps)} >Clear Resume</button>
       <button id="reset" onClick={() => HandleLoad(setterProps)}>Load Example</button>
+      {switchTab 
+      ?
       <div className="forms">
         <CreateForm {...personFormProps}/>
         <CreateForm {...jobFormProps} />
         <CreateForm {...eduFormProps} />
       </div>
+      :
+      <div className="customization">
+        <div id="color">
+          <p>Color</p>
+          <input type="color" id='color-input' onChange={(e) => handleColor}/>
+        </div>
+        <div id="layouts">
+          <p>Layout</p>
+          <div className="layout-options">
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <img src="" alt="" />
+          </div>
+        </div>
+        <div id="fonts">
+          <p>Fonts</p>
+          <div className="font-options">
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <img src="" alt="" />
+          </div>
+        </div>
+      </div>}
 
       <CV {...cvProps}/>
     </div>
