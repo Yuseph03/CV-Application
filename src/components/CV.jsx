@@ -1,7 +1,7 @@
 function CV(props) {
     return (
         <div id="cv">
-            <section id="cv-heading">
+            <section id="cv-heading" style={{backgroundColor: props.color}}>
                 <h2>{props.fullname}</h2> 
                 <div>
                     <p>{props.email}</p>
@@ -10,7 +10,7 @@ function CV(props) {
                 </div>
             </section>
             <section id="cv-education">
-                <h3 id="cv-education-heading">Education</h3>
+                <h3 id="cv-education-heading" style={{color: props.color}}>Education</h3>
                 <div>
                     <p><b>{props.school}</b></p>
                     <p>{props.degree}</p>
@@ -19,7 +19,7 @@ function CV(props) {
                 </div>
             </section>
             <section id="cv-job">
-                <h3 id="cv-job-heading">Professional Experience</h3>
+                <h3 id="cv-job-heading" style={{color: props.color}}>Professional Experience</h3>
                 <div>
                     <p><b>{props.company}</b></p>
                     <p>{props.role}</p>

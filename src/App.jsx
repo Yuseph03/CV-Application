@@ -5,6 +5,7 @@ import CV from './components/CV'
 import Data from './data.json'
 import HandleLoad from './components/HandleLoad' 
 import HandleDelete from './components/HandleDelete'
+// import HandleColor from './components/HandleColor'
 
 function App() {
   const [fullname, setName] = useState(Data.Person.name)
@@ -21,11 +22,16 @@ function App() {
   const [jobStartDate, setJobStartDate] = useState(Data.Job.jobStartDate)
   const [jobEndDate, setJobEndDate] = useState(Data.Job.jobEndDate)
   const [jobLocation, setJobLocation] = useState(Data.Job.location)
-  const [switchTab, setSwitchTab] = useState(false)
+  const [switchTab, setSwitchTab] = useState(true)
+  const [color, setColor] = useState('#1F81E2')
+
+  const handleColor = (event) => {
+    return setColor(event.target.value);
+  }
 
   const handleSwitchTab = () => {
     return setSwitchTab(!switchTab);
-  };
+  }
 
   const setterProps = {
     setName, setEmail, setNumber, setAddress, setCompany, setRole, setJobStartDate, 
@@ -34,7 +40,7 @@ function App() {
   }
 
   const cvProps = {
-    fullname, email, number, address, school, degree, 
+    color, fullname, email, number, address, school, degree, 
     uniStartDate, uniEndDate, uniLocation, company, role, jobStartDate, jobEndDate, jobLocation
   }
 
@@ -55,9 +61,10 @@ function App() {
 
   return (
     <div id="app-grid">
-      {/* <button id='content' onClick={handleSwitchTab}>Content</button> */}
-      <button id='custumization' onClick={handleSwitchTab}>Customize</button>
-      <button id="delete" onClick={() => HandleDelete(setterProps)} >Clear Resume</button>
+      <button id='custumization' onClick={handleSwitchTab}>
+        {switchTab ? 'Customize' : 'Content'}
+      </button>
+      <button id="delete" onClick={() => HandleDelete(setterProps)}>Clear Resume</button>
       <button id="reset" onClick={() => HandleLoad(setterProps)}>Load Example</button>
       {switchTab 
       ?
@@ -70,14 +77,14 @@ function App() {
       <div className="customization">
         <div id="color">
           <p>Color</p>
-          <input type="color" id='color-input' onChange={(e) => handleColor}/>
+          <input type="color" value={color} id='color-input' onChange={handleColor}/>
         </div>
         <div id="layouts">
           <p>Layout</p>
-          <div className="layout-options">
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
+          <div id="layout-options">
+           <div className='layout' style={{background: "linear-gradient(to bottom,"+ color +" 50%, white 50%)" }}></div>
+           <div className='layout' style={{background: "linear-gradient(to left,"+ color +" 50%, white 50%)" }}></div>
+           <div className='layout' style={{background: "linear-gradient(to right,"+ color +" 50%, white 50%)" }}></div>
           </div>
         </div>
         <div id="fonts">
