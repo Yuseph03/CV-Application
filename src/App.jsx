@@ -5,7 +5,8 @@ import CV from './components/CV'
 import Data from './data.json'
 import HandleLoad from './components/HandleLoad' 
 import HandleDelete from './components/HandleDelete'
-// import HandleColor from './components/HandleColor'
+import ColorPicker from './components/ColorPicker'
+import FontPicker from './components/FontPicker'
 
 function App() {
   const [fullname, setName] = useState(Data.Person.name)
@@ -24,6 +25,11 @@ function App() {
   const [jobLocation, setJobLocation] = useState(Data.Job.location)
   const [switchTab, setSwitchTab] = useState(true)
   const [color, setColor] = useState('#1F81E2')
+  const [font, setFont] = useState('')
+
+  const handleFont = (event) => {
+    return setFont(event.target.className)
+  }
 
   const handleColor = (event) => {
     return setColor(event.target.value);
@@ -40,7 +46,7 @@ function App() {
   }
 
   const cvProps = {
-    color, fullname, email, number, address, school, degree, 
+    color, fullname, email, number, address, school, degree, font,
     uniStartDate, uniEndDate, uniLocation, company, role, jobStartDate, jobEndDate, jobLocation
   }
 
@@ -59,6 +65,10 @@ function App() {
      setUniEndDate, setUniLocation, school, degree, uniStartDate, uniEndDate, uniLocation
   }
 
+  const colorProps = {
+    color, handleColor
+  }
+
   return (
     <div id="app-grid">
       <button id='custumization' onClick={handleSwitchTab}>
@@ -75,10 +85,7 @@ function App() {
       </div>
       :
       <div className="customization">
-        <div id="color">
-          <p>Color</p>
-          <input type="color" value={color} id='color-input' onChange={handleColor}/>
-        </div>
+        <ColorPicker {...colorProps}/>
         <div id="layouts">
           <p>Layout</p>
           <div id="layout-options">
@@ -87,14 +94,7 @@ function App() {
            <div className='layout' style={{background: "linear-gradient(to right,"+ color +" 50%, white 50%)" }}></div>
           </div>
         </div>
-        <div id="fonts">
-          <p>Fonts</p>
-          <div className="font-options">
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <img src="" alt="" />
-          </div>
-        </div>
+        <FontPicker handleFont={handleFont}/>
       </div>}
 
       <CV {...cvProps}/>

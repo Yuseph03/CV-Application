@@ -1,6 +1,6 @@
 function CV(props) {
     return (
-        <div id="cv">
+        <div id="cv" className={props.font}>
             <section id="cv-heading" style={{backgroundColor: props.color}}>
                 <h2>{props.fullname}</h2> 
                 <div>

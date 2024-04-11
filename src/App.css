@@ -45,6 +45,7 @@
   border-radius: 8px;
 }
 
+#font-options,
 #layout-options {
   display: flex;
   flex-direction: row;
@@ -56,4 +57,24 @@
   height: 3rem;
   border: 0.1rem solid black;
   border-radius: 7px;
+}
+
+#color-input {
+  border-style: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.serif {
+  font-family: serif;
+}
+
+.sans-serif {
+  font-family: sans-serif;
+}
+
+.monospace {
+  font-family: monospace;
 }
