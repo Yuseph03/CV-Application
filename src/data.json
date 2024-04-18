@@ -1,9 +1,9 @@
 {
     "Person": {
-        "name": "yuseph", 
+        "name": "Yousef Navidmehr", 
         "email": "yuseph@gmail.com", 
         "address": "Karaj",
-        "number": "12345678"
+        "number": "003455678"
     },
     "Education": {
         "uniStartDate": "2024",
@@ -17,6 +17,7 @@
         "jobEndDate": "present",
         "company": "Dream wage cuckery den",
         "role": "Fullstack Developer",
-        "location": "Iran, Tehran"
+        "location": "Iran, Tehran",
+        "description" : "Responsible for designing, developing, and maintaining cutting-edge software applications. With a strong background in both frontend and backend development to contribute a dynamic and collaborative environment."
     }  
 }

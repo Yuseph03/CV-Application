@@ -1,7 +1,7 @@
 export default function EduInput (props)   {
     return (
     <div id="edu-info">
-        <button onClick={props.handleExpand}>click</button>
+        <button onClick={props.handleExpand}>Education</button>
         {props.expanded 
         ?
         <div>

@@ -7,6 +7,7 @@ import HandleLoad from './components/HandleLoad'
 import HandleDelete from './components/HandleDelete'
 import ColorPicker from './components/ColorPicker'
 import FontPicker from './components/FontPicker'
+import LayoutPicker from './components/LayoutPicker'
 
 function App() {
   const [fullname, setName] = useState(Data.Person.name)
@@ -23,9 +24,24 @@ function App() {
   const [jobStartDate, setJobStartDate] = useState(Data.Job.jobStartDate)
   const [jobEndDate, setJobEndDate] = useState(Data.Job.jobEndDate)
   const [jobLocation, setJobLocation] = useState(Data.Job.location)
+  const [jobDesc, setJobDesc] = useState(Data.Job.description)
   const [switchTab, setSwitchTab] = useState(true)
   const [color, setColor] = useState('#1F81E2')
-  const [font, setFont] = useState('')
+  const [font, setFont] = useState('monospace')
+  const [layout, setLayout] = useState('toRightCV')
+
+  const handleLayout = (event) => {
+    let layout =  event.target.className;
+    if (layout === 'layout1') {
+      layout = 'toBottom'
+    } else if (layout === 'layout2') {
+      layout = 'toRight'
+    } else if (layout === 'layout3') {
+      layout = 'toLeft'
+    } else null
+
+    return setLayout(layout)
+  }
 
   const handleFont = (event) => {
     return setFont(event.target.className)
@@ -42,11 +58,11 @@ function App() {
   const setterProps = {
     setName, setEmail, setNumber, setAddress, setCompany, setRole, setJobStartDate, 
     setJobEndDate, setJobLocation, setSchool, setDegree, setUniStartDate,
-    setUniEndDate, setUniLocation
+    setUniEndDate, setUniLocation, setJobDesc
   }
 
   const cvProps = {
-    color, fullname, email, number, address, school, degree, font,
+    color, fullname, email, number, address, school, degree, font, layout, jobDesc,
     uniStartDate, uniEndDate, uniLocation, company, role, jobStartDate, jobEndDate, jobLocation
   }
 
@@ -56,8 +72,8 @@ function App() {
   }
 
   const jobFormProps = {
-    inputType: "JobInfo", setCompany, setRole, setJobStartDate, 
-    setJobEndDate, setJobLocation, company, role, jobStartDate, jobEndDate, jobLocation
+    inputType: "JobInfo", setCompany, setRole, setJobStartDate, setJobDesc,
+    setJobEndDate, setJobLocation, company, role, jobStartDate, jobEndDate, jobLocation, jobDesc
   }
 
   const eduFormProps = {
@@ -65,41 +81,32 @@ function App() {
      setUniEndDate, setUniLocation, school, degree, uniStartDate, uniEndDate, uniLocation
   }
 
-  const colorProps = {
-    color, handleColor
-  }
-
   return (
     <div id="app-grid">
-      <button id='custumization' onClick={handleSwitchTab}>
-        {switchTab ? 'Customize' : 'Content'}
-      </button>
-      <button id="delete" onClick={() => HandleDelete(setterProps)}>Clear Resume</button>
-      <button id="reset" onClick={() => HandleLoad(setterProps)}>Load Example</button>
-      {switchTab 
-      ?
-      <div className="forms">
-        <CreateForm {...personFormProps}/>
-        <CreateForm {...jobFormProps} />
-        <CreateForm {...eduFormProps} />
-      </div>
-      :
-      <div className="customization">
-        <ColorPicker {...colorProps}/>
-        <div id="layouts">
-          <p>Layout</p>
-          <div id="layout-options">
-           <div className='layout' style={{background: "linear-gradient(to bottom,"+ color +" 50%, white 50%)" }}></div>
-           <div className='layout' style={{background: "linear-gradient(to left,"+ color +" 50%, white 50%)" }}></div>
-           <div className='layout' style={{background: "linear-gradient(to right,"+ color +" 50%, white 50%)" }}></div>
+        <div className="side-bar">
+          <button id='custumization' onClick={handleSwitchTab}>
+            {switchTab ? 'Customize' : 'Content'}
+          </button>
+          <div className="delete-reset-panel">
+            <button id="delete" onClick={() => HandleDelete(setterProps)}>Clear Resume</button>
+            <button id="reset" onClick={() => HandleLoad(setterProps)}>Load Example</button>
           </div>
+          {switchTab
+          ?
+          <div className="forms">
+            <CreateForm {...personFormProps}/>
+            <CreateForm {...jobFormProps} />
+            <CreateForm {...eduFormProps} />
+          </div>
+          :
+          <div className="customization">
+            <ColorPicker  handleColor={handleColor} color={color}/>
+            <LayoutPicker handleLayout={handleLayout} color={color}/>
+            <FontPicker handleFont={handleFont}/>
+          </div>}
         </div>
-        <FontPicker handleFont={handleFont}/>
-      </div>}
-
       <CV {...cvProps}/>
-    </div>
-  )
+    </div>)
 }
 
 export default App

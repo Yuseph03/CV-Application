@@ -46,11 +46,13 @@ function CreateForm(props) {
         jobStartDate: props.jobStartDate, 
         jobEndDate: props.jobEndDate, 
         jobLocation: props.jobLocation,
+        jobDesc: props.jobDesc,
         setCompany: props.setCompany, 
         setRole: props.setRole, 
         setJobStartDate: props.setJobStartDate,
         setJobEndDate: props.setJobEndDate,
-        setJobLocation: props.setJobLocation
+        setJobLocation: props.setJobLocation,
+        setJobDesc: props.setJobDesc
     }
 
     return (
@@ -58,6 +60,7 @@ function CreateForm(props) {
             {props.inputType === 'PersonInfo' && <PersonInput {...personProps} />}
             {props.inputType === 'EduInfo' && <EduInput {...eduProps} />}
             {props.inputType === 'JobInfo' && <JobInput {...jobProps} />}
+            
         </>
     )
 }

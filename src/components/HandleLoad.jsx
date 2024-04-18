@@ -7,7 +7,7 @@ export default function HandleLoad(props) {
     props.setAddress(Data.Person.address)
     props.setSchool(Data.Education.school)
     props.setDegree(Data.Education.degree)
-    props.setUniEndDate(Data.Education.uniStartDate)
+    props.setUniStartDate(Data.Education.uniStartDate)
     props.setUniEndDate(Data.Education.uniEndDate)
     props.setUniLocation(Data.Education.location)
     props.setCompany(Data.Job.company)
