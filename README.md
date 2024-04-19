@@ -5,7 +5,7 @@ A minimal React application I did in order to get some practice with the useStat
 
 ## Demo
 
-![Image Link](https://imgur.com/2VWWOR7)
+![Image Link](https://imgur.com/2VWWOR7.img)
 
 ## Notable Features
 
