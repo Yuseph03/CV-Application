@@ -1,8 +1,8 @@
 {
     "Person": {
-        "name": "Yousef Navidmehr", 
-        "email": "yuseph@gmail.com", 
-        "address": "Karaj",
+        "name": "raayan demirci", 
+        "email": "raayaan@gmail.com", 
+        "address": "Tabriz",
         "number": "003455678"
     },
     "Education": {
@@ -15,7 +15,7 @@
     "Job": {
         "jobStartDate": "2024",
         "jobEndDate": "present",
-        "company": "Dream wage cuckery den",
+        "company": "Lorem Ipsum",
         "role": "Fullstack Developer",
         "location": "Iran, Tehran",
         "description" : "Responsible for designing, developing, and maintaining cutting-edge software applications. With a strong background in both frontend and backend development to contribute a dynamic and collaborative environment."
